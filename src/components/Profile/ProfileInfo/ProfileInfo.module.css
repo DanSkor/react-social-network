@@ -1,0 +1,7 @@
+.content__bg {
+    height: 300px;
+    object-fit: cover;
+    width: -webkit-fill-available;
+    display: block;
+  }
+  

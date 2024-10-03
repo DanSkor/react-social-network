@@ -1,0 +1,50 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 60px;
+}
+
+.dialogs_list {
+  position: relative;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dialogs_list::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -10px;
+  width: 2px;
+  height: 100%;
+  background-color: burlywood;
+}
+
+.messages_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_wrapper {
+  margin-top: 30px;
+  align-self: center;
+  display: flex;
+  gap: 5px;
+}
+
+.input {
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.button {
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+  background-color: #fff;
+}

@@ -5,6 +5,7 @@ import FriendsOnline from './FriendsOnline/FriendsOnline';
 
 
 const Nav = (props) => {
+console.log(props)
     return (
         <nav className={style.nav}>
             <ul className={style.nav__list}>

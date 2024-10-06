@@ -3,6 +3,7 @@ import style from './FriendsOnline.module.css';
 import Friend from './Friend/Friend';
 
 let FriendsOnline = (props) => {
+    // console.log(props)
     let friends = props.friendsOnlineData.map(item => <Friend src={item.img} title={item.title}/>)
 
     return (

@@ -4,7 +4,7 @@ import Friend from './Friend/Friend';
 
 let FriendsOnline = (props) => {
     // console.log(props)
-    let friends = props.friendsOnlineData.map(item => <Friend src={item.img} title={item.title}/>)
+    let friends = props.friendsOnlineData.map(item => <Friend src={item.img} title={item.title} key={item.id}/>)
 
     return (
         <div className={style.block}>

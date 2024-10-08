@@ -5,7 +5,7 @@ import FriendsOnline from './FriendsOnline/FriendsOnline';
 
 
 const Nav = (props) => {
-console.log(props)
+// console.log(props)
     return (
         <nav className={style.nav}>
             <ul className={style.nav__list}>
@@ -20,6 +20,9 @@ console.log(props)
                 </li>
                 <li>
                     <NavLink className={item => item.isActive ? `${style.active} ${style.link}` : style.link} to='/music'>Music</NavLink>
+                </li>
+                <li>
+                    <NavLink className={item => item.isActive ? `${style.active} ${style.link}` : style.link} to='/users'>Find users</NavLink>
                 </li>
                 <li>
                     <NavLink className={item => item.isActive ? `${style.active} ${style.link}` : style.link} to='/settings'>Settings</NavLink>

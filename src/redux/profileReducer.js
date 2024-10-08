@@ -17,7 +17,7 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newMessage = {
                 id: state.postsData.length++,
                 name: 'Me',
@@ -25,12 +25,16 @@ const profileReducer = (state = initialState, action) => {
                 likesCount: 0,
                 image: me,
             };
-            state.postsData.push(newMessage);
-            state.inputTextValue = '';
-            return state;
-        case UPDATE_INPUT_PROFILE:
-            state.inputTextValue = action.symbols;
-            return state;
+            let stateCopy = Object.assign({}, state)
+            stateCopy.postsData.push(newMessage);
+            stateCopy.inputTextValue = '';
+            return stateCopy;
+        }
+        case UPDATE_INPUT_PROFILE: {
+            let stateCopy = Object.assign({}, state)
+            stateCopy.inputTextValue = action.symbols;
+            return stateCopy;
+        }
         default:
             return state;
     }

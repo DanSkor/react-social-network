@@ -7,8 +7,12 @@ import Dialog from './Dialog/Dialog';
 const Dialogs = (props) => {
     // console.log(props)
 
-    let dialogs = props.messagesPage.dialogsData.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
-    let messages = props.messagesPage.messagesData.map(message => message.id === 'user' ? <MessageOut message={message.message}/> : <MessageIn message={message.message}/>)
+    let dialogs = props.messagesPage.dialogsData.map(dialog => <Dialog name={dialog.name} id={dialog.id} key={dialog.id}/>)
+    let messages = props.messagesPage.messagesData.map(message => {
+        let id =  message.id.toString();
+        return id.startsWith('user') ? <MessageOut message={message.message} key={message.id}/> :
+                                        <MessageIn message={message.message} key={message.id}/>
+    })
 
     let newMessage = React.createRef();
 

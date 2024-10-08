@@ -9,28 +9,36 @@ let initialState = {
     ],
     messagesData: [
         {id: 1, message: 'Hi!'},
-        {id: 'user', message: 'Hello my friend!'},
-        {id: 3, message: 'I have greate news for you!'},
-        {id: 'user', message: 'Im hear you!!!'},
+        {id: 'user/1', message: 'Hello my friend!'},
+        {id: 2, message: 'I have greate news for you!'},
+        {id: 'user/2', message: 'Im hear you!!!'},
         ],
     dialogsInputValue: '',
 }
 
 const messagesReducer = (state = initialState, action) => {
     switch(action.type) {
-        case SEND_MESSAGE: 
-            let text = {
-                id: 'user',
-                message: state.dialogsInputValue,
+        case SEND_MESSAGE: {
+            return {
+                ...state,
+                dialogsInputValue: '',
+                messagesData: [...state.messagesData, {id: 'user/3', message: state.dialogsInputValue} ]
             }
-            state.messagesData.push(text);
-            state.dialogsInputValue = '';
-            return state;
-        case UPDATE_INPUT_DIALOGS:
-            state.dialogsInputValue = action.symbols;
-            return state;
+            // let stateCopy = Object.assign({}, state)
+            // stateCopy.messagesData.push(text);
+            // stateCopy.dialogsInputValue = '';
+        }
+        case UPDATE_INPUT_DIALOGS: {
+            return {
+                ...state,
+                dialogsInputValue: action.symbols,
+            }
+            // stateCopy.dialogsInputValue = action.symbols;
+            // return stateCopy;
+        }
         default:
             return state;
+            
     }
 }
 

@@ -11,15 +11,15 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        // follow: (userId) => {
-        //     dispatch(followAC(userId));
-        // },
-        // unfollow: (userId) => {
-        //     dispatch(unfollowAC(userId));
-        // },
-        // setUsers: (users) => {
-        //     dispatch(setUsersAC(users));
-        // }
+        follow: (userId) => {
+            dispatch(followAC(userId));
+        },
+        unfollow: (userId) => {
+            dispatch(unfollowAC(userId));
+        },
+        setUsers: (users) => {
+            dispatch(setUsersAC(users));
+        }
     }
 }
 

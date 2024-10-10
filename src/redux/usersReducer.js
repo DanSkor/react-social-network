@@ -1,4 +1,4 @@
-import userAva from '../img/user-ava.jpg'
+// import userAva from '../img/user-ava.jpg'
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -6,10 +6,10 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     users: [
-        {id: 1, isFollow: true, fullname: 'Vasiliy Balalaikin', status: 'Ебу твои принципы в принципе', location: {city: 'Minsk', country: 'Belarus'}, image: userAva},
-        {id: 2, isFollow: false, fullname: 'Petr Herov', status: 'Пей пиво, ешь мясо', location: {city: 'New York', country: 'USA'}, image: userAva},
-        {id: 3, isFollow: true, fullname: 'Harry Potter', status: 'Lumus', location: {city: 'London', country: 'UK'}, image: userAva},
-        {id: 4, isFollow: false, fullname: 'Naruto Udzumaki', status: 'Даттебайо', location: {city: 'Tuman', country: 'List'}, image: userAva},
+        // {id: 1, isFollow: true, fullname: 'Vasiliy Balalaikin', status: 'Ебу твои принципы в принципе', location: {city: 'Minsk', country: 'Belarus'}, image: userAva},
+        // {id: 2, isFollow: false, fullname: 'Petr Herov', status: 'Пей пиво, ешь мясо', location: {city: 'New York', country: 'USA'}, image: userAva},
+        // {id: 3, isFollow: true, fullname: 'Harry Potter', status: 'Lumus', location: {city: 'London', country: 'UK'}, image: userAva},
+        // {id: 4, isFollow: false, fullname: 'Naruto Udzumaki', status: 'Даттебайо', location: {city: 'Tuman', country: 'List'}, image: userAva},
     ],
 }
 
@@ -42,7 +42,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state,
-                users: [...state.users, ...action.users],
+                users: [...action.users],
             }
 
         }

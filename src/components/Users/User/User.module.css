@@ -13,12 +13,21 @@
     border-radius: 50%;
 }
 
-.button {
+.buttonUnfollow,
+.buttonFollow {
     background-color: transparent;
     padding: 9px;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 255, .4);
     cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 72px;
+}
+
+.buttonFollow {
+    background-color: rgba(0, 128, 0, 0.5);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .itemImage {

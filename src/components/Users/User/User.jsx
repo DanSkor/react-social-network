@@ -3,7 +3,7 @@ import style from "./User.module.css";
 import userAva from '../../../img/user-ava.jpg'
 
 let User = (props) => {
-    // console.log(props)
+    console.log(props)
     return (
         <li className={style.item}>
                 <div className={style.itemImage}>

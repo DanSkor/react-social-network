@@ -6,7 +6,6 @@ const ProfileInfo = () => {
         <div>
             <img className={style.content__bg} src={bg}></img>
             <div>
-                ava
             </div>
         </div>
     )

@@ -1,50 +1,29 @@
 import React from "react";
 import style from "./Users.module.css";
 import User from "./User/User";
-import axios from "axios";
 
-// let Users = (props) => {
-//     let getUsers = () => {
-//         if (props.users.length === 0) {
-//             axios.get('https://social-network.samuraijs.com/api/1.0/users')
-//                 .then(response => {
-//                     props.setUsers(response.data.items)
-//                 })
-//         }
-//     }
-
-//     let users = props.users.map(user => <User id={user.id} followed={user.followed} name={user.name} status={user.status} location={user.location} photos={user.photos} follow={props.follow} unfollow={props.unfollow} setUsers={props.setUsers}/>)
-//     return (
-//         <div>
-//             <h2>Users</h2>
-//             <ul className={style.list}>
-//                 {users}
-//             </ul>
-//             <button className={style.button} onClick={getUsers} type="button">Show more users</button>
-//         </div>
-//     )
-// }
-
-class Users extends React.Component {
-    componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            })
+let Users = (props) => {
+    // console.log(props.users)
+    let users = props.users.map(user => <User id={user.id} key={user.id} followed={user.followed} name={user.name} status={user.status} location={user.location} photos={user.photos} follow={props.follow} unfollow={props.unfollow} setUsers={props.setUsers} />);
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
-
-    users = this.props.users.map(user => <User id={user.id} key={user.id} followed={user.followed} name={user.name} status={user.status} location={user.location} photos={user.photos} follow={this.props.follow} unfollow={this.props.unfollow} setUsers={this.props.setUsers} />)
-    render() {
         return (
             <div>
                 <h2>Users</h2>
-                <ul className={style.list}>
-                    {this.users}
+                <ul className={style.pagination}>
+                    {pages.map(page => {
+                        return <li><button className={props.currentPage === page ? style.buttonCurrent : style.button} onClick={() => props.onPageChanged(page)} type="button">{page}</button></li>
+                    })}
                 </ul>
-                <button className={style.button} onClick={this.getUsers} type="button">Show more users</button>
+                <ul className={style.list}>
+                    {users}
+                </ul>
+                <button className={style.button} onClick={props.getUsers} type="button">Show more users</button>
             </div>
         )
     }
-}
 
 export default Users;

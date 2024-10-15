@@ -5,6 +5,7 @@ import gandalf from '../img/gandalf.jpg';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_INPUT_PROFILE = 'UPDATE-INPUT-PROFILE';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     postsData: [
@@ -13,6 +14,7 @@ let initialState = {
         {id: 3, name: 'Gandalf', comment: 'You will not pass!', likesCount: 686, image: gandalf},
     ],
     inputTextValue: '',
+    profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -35,6 +37,12 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.inputTextValue = action.symbols;
             return stateCopy;
         }
+        case SET_USER_PROFILE: {
+           return {
+            ...state,
+            profile: action.profile,
+           }
+        }
         default:
             return state;
     }
@@ -42,6 +50,11 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({
     type: ADD_POST,
+})
+
+export const setUserProfile = (profile) => ({
+    type: SET_USER_PROFILE,
+    profile,
 })
 
 export const updateInputProfileActionCreator = (text) => ({

@@ -1,7 +1,23 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 20px;
+}
+
 .content__bg {
     height: 300px;
-    object-fit: cover;
-    width: -webkit-fill-available;
+    object-fit: none;
     display: block;
-  }
-  
+}
+
+.fullName {
+  margin: 0 0 15px;
+}
+
+.aboutMe {
+  margin: 0 0 25px;
+}
+
+.list {
+  margin: 0;
+}

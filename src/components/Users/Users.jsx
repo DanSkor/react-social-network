@@ -3,8 +3,8 @@ import style from "./Users.module.css";
 import User from "./User/User";
 
 let Users = (props) => {
-    // console.log(props.users)
-    let users = props.users.map(user => <User id={user.id} key={user.id} followed={user.followed} name={user.name} status={user.status} location={user.location} photos={user.photos} follow={props.follow} unfollow={props.unfollow} setUsers={props.setUsers} />);
+    // console.log(props)
+    let users = props.users.map(user => <User id={user.id} key={user.id} followed={user.followed} name={user.name} status={user.status} location={user.location} photos={user.photos} follow={props.follow} unfollow={props.unfollow} setUsers={props.setUsers} toggleFollowingProgress={props.toggleFollowingProgress} inProgress={props.inProgress}/>);
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {

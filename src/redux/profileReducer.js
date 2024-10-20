@@ -2,6 +2,7 @@ import me from '../img/me.webp';
 import avatar from '../img/ava.jpg';
 import hren from '../img/hren.png';
 import gandalf from '../img/gandalf.jpg';
+import { getApiProfile } from '../api/api';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_INPUT_PROFILE = 'UPDATE-INPUT-PROFILE';
@@ -61,5 +62,14 @@ export const updateInputProfileActionCreator = (text) => ({
     type: UPDATE_INPUT_PROFILE,
     symbols: text,
 })
+
+export const getProfile = (userId) => {
+
+    return (dispatch) => {
+        getApiProfile(userId).then(data => {
+            dispatch(setUserProfile(data));
+        })
+    }
+}
 
 export default profileReducer;

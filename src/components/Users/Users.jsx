@@ -20,7 +20,6 @@ let Users = (props) => {
                 <h2>Users</h2>
                 <ul className={style.pagination}>
                     {pages.map(page => {
-                        console.log(props.currentPage, page)
                         return <li><button className={props.currentPage === page ? style.buttonCurrent : style.button} onClick={() => props.onPageChanged(page)} type="button">{page}</button></li>
                     })}
                 </ul>

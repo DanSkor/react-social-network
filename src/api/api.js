@@ -27,7 +27,9 @@ export const getFollow = (id) => {
             withCredentials: true,
             headers: {'API-KEY': '55bc9523-1d91-4584-a2d8-afd097d20a45'}
         })
-        .then(response => response.data)
+        .then(response => {
+            return response.data
+})
 }
 
 export const getUnfollow = (id) => {

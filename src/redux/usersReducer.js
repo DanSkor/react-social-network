@@ -1,4 +1,4 @@
-import { getApiUsers, getFollow, getUnfollow } from "../api/api";
+import { getApiProfile, getApiUsers, getFollow, getUnfollow } from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -109,6 +109,10 @@ export const follow = (userId) => {
                  dispatch(followSuccess(userId))
                 }
             dispatch(toggleFollowingProgress(false, userId));
+        })
+
+        getApiProfile(userId).then(user => {
+            console.log(user)
         })
     }
 }

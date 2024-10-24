@@ -1,0 +1,17 @@
+.statusText {
+  display: block;
+  font-family: 'Segoe UI';
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.statusInput {
+  font-family: 'Segoe UI';
+  font-weight: 400;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: none;
+  outline: 1px solid plum;;
+  outline-offset: 5px;
+}

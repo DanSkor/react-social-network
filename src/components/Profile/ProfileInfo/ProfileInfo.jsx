@@ -1,6 +1,7 @@
 import style from './ProfileInfo.module.css';
 import bg from '../../../img/gallery.jpg';
 import Preloader from '../../common/Preloader/Preloader';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
     // console.log(props)
@@ -13,6 +14,7 @@ const ProfileInfo = (props) => {
             <img className={style.content__bg} src={ props.profile.photos.large ? props.profile.photos.large : bg }></img>
             <div className={style.content}>
                 <h2 className={style.fullName}>{props.profile.fullName}</h2>
+                <ProfileStatus status={'Hello friends!'}/>
                 <p className={style.aboutMe}>{props.profile.aboutMe}</p>
                 <i>{props.profile.lookingForAJob ? 'В поисках работы...' : 'Работу не ищу'}</i>
                 <p>({props.profile.lookingForAJobDescription})</p>

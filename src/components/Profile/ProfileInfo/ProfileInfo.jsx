@@ -14,7 +14,7 @@ const ProfileInfo = (props) => {
             <img className={style.content__bg} src={ props.profile.photos.large ? props.profile.photos.large : bg }></img>
             <div className={style.content}>
                 <h2 className={style.fullName}>{props.profile.fullName}</h2>
-                <ProfileStatus status={'Hello friends!'}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 <p className={style.aboutMe}>{props.profile.aboutMe}</p>
                 <i>{props.profile.lookingForAJob ? 'В поисках работы...' : 'Работу не ищу'}</i>
                 <p>({props.profile.lookingForAJobDescription})</p>

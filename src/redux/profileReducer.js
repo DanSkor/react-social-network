@@ -2,11 +2,12 @@ import me from '../img/me.webp';
 import avatar from '../img/ava.jpg';
 import hren from '../img/hren.png';
 import gandalf from '../img/gandalf.jpg';
-import { getApiProfile } from '../api/api';
+import { getApiProfile, getApiStatus, updateApiStatus } from '../api/api';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_INPUT_PROFILE = 'UPDATE-INPUT-PROFILE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     postsData: [
@@ -16,6 +17,7 @@ let initialState = {
     ],
     inputTextValue: '',
     profile: null,
+    status: '',
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -44,6 +46,12 @@ const profileReducer = (state = initialState, action) => {
             profile: action.profile,
            }
         }
+        case SET_STATUS: {
+           return {
+            ...state,
+            status: action.status,
+           }
+        }
         default:
             return state;
     }
@@ -63,11 +71,38 @@ export const updateInputProfileActionCreator = (text) => ({
     symbols: text,
 })
 
+export const setStatus = (status) => ({
+    type: SET_STATUS,
+    status
+})
+
 export const getProfile = (userId) => {
 
     return (dispatch) => {
         getApiProfile(userId).then(data => {
             dispatch(setUserProfile(data));
+        })
+    }
+}
+
+export const getStatus = (userId) => {
+
+    return (dispatch) => {
+        getApiStatus(userId)
+        .then(data => {
+            dispatch(setStatus(data));
+        })
+    }
+}
+
+export const updateStatus = (status) => {
+
+    return (dispatch) => {
+        updateApiStatus(status)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
         })
     }
 }

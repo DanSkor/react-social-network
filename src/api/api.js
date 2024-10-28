@@ -40,3 +40,20 @@ export const getUnfollow = (id) => {
         })
         .then(response => response.data)
 }
+
+export const getApiStatus = (id) => {
+    return axios.get(BASE_URL + 'profile/status/' + id)
+        .then(response => response.data)
+}
+
+export const updateApiStatus = (status) => {
+    return axios.put(BASE_URL + 'profile/status',
+       {
+        status: status
+       },
+       {
+        withCredentials: true,
+        headers: {'API-KEY': '55bc9523-1d91-4584-a2d8-afd097d20a45'}
+    })
+        .then(response => response.data)
+}

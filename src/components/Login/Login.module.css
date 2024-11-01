@@ -10,14 +10,19 @@ h3 {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .input {
     padding: 10px;
     background-color: transparent;
     border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
 
+.inputError {
+    border: 1px solid lightcoral;
 }
 
 .button {
@@ -25,8 +30,22 @@ h3 {
     background-color: transparent;
     border-radius: 10px;
     border: 2px solid burlywood;
+    cursor: pointer;
 }
 
 .checkboxWrapper {
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.error {
+    font-style: italic;
+    text-align: center;
 }

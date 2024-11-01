@@ -28,18 +28,15 @@ import { connect } from 'react-redux';
 let mapStateToProps = (state) => {
     return {
         posts: state.profilePage.postsData,
-        inputTextValue: state.profilePage.inputTextValue
+        // inputTextValue: state.profilePage.inputTextValue
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
    return {
-        addPost: () => {
-            dispatch(addPostActionCreator());
+        addPost: (newPostText) => {
+            dispatch(addPostActionCreator(newPostText));
         },
-        updateNewPostText: (text) => {
-            dispatch(updateInputProfileActionCreator(text));
-        }
     }
 }
 

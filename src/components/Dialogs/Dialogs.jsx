@@ -3,7 +3,33 @@ import style from './Dialogs.module.css';
 import MessageOut from './MessageOut/MessageOut';
 import MessageIn from './MessageIn/MessageIn';
 import Dialog from './Dialog/Dialog';
-import { Navigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+const DialogsForm = (props) => {
+    // let newMessage = React.createRef();
+    return (
+        <Formik 
+        initialValues={{newMessage: ''}}
+        onSubmit={values => {
+            props.addMessage(values.newMessage);
+        }}
+        validate={values => {
+            const errors = {};
+            if (!values.newMessage) {
+                errors.newMessage = 'Required';
+            }
+            return errors;
+        }}>
+
+        {() => (
+            <Form className={style.input_wrapper}>
+                <Field className={style.input} name={'newMessage'} type='text' placeholder='Введите сообщение...'></Field>
+                <button className={style.button} type='submit'>Отправить</button>
+            </Form>
+        )}
+    </Formik>
+    )
+}
 
 const Dialogs = (props) => {
     // console.log(props)
@@ -15,34 +41,29 @@ const Dialogs = (props) => {
                                         <MessageIn message={message.message} key={message.id}/>
     })
 
-    let newMessage = React.createRef();
+    // let onButtonClick = (values) => {
+    //     props.addMessage(values.newMessage);
+    // }
 
-    let onButtonClick = () => {
-        props.addMessage();
-    }
-
-    let onInputChange = () => {
-        let text = newMessage.current.value;
-        props.updateNewMessageText(text);
-    }
+    // let onInputChange = () => {
+    //     let text = newMessage.current.value;
+    //     props.updateNewMessageText(text);
+    // }
 
     return (
-       <div className={style.dialogs}>
+        <div className={style.dialogs}>
         <div className={style.dialogs_list}>
             <ul className={style.list}>
                 {dialogs}
             </ul>
         </div>
-        <div className={style.messages_wrapper}>
-            <div className={style.messages}>
-                {messages}
-            </div>
-            <div className={style.input_wrapper}>
-                <input className={style.input} ref={newMessage} onChange={onInputChange} value={props.messagesPage.dialogsInputValue} type='text' placeholder='Введите сообщение...'></input>
-                <button className={style.button} onClick={onButtonClick}>Отправить</button>
+            <div className={style.messages_wrapper}>
+                <div className={style.messages}>
+                    {messages}
+                </div>
+                <DialogsForm addMessage={props.addMessage}/>
             </div>
         </div>
-       </div>
     )
 }
 

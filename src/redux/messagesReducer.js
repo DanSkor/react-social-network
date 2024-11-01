@@ -1,5 +1,5 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_INPUT_DIALOGS = 'UPDATE-INPUT-DIALOGS';
+// const UPDATE_INPUT_DIALOGS = 'UPDATE-INPUT-DIALOGS';
 
 let initialState = {
     dialogsData: [
@@ -13,7 +13,7 @@ let initialState = {
         {id: 2, message: 'I have greate news for you!'},
         {id: 'user/2', message: 'Im hear you!!!'},
         ],
-    dialogsInputValue: '',
+    // dialogsInputValue: '',
 }
 
 const messagesReducer = (state = initialState, action) => {
@@ -21,34 +21,35 @@ const messagesReducer = (state = initialState, action) => {
         case SEND_MESSAGE: {
             return {
                 ...state,
-                dialogsInputValue: '',
-                messagesData: [...state.messagesData, {id: 'user/3', message: state.dialogsInputValue} ]
+                // dialogsInputValue: '',
+                messagesData: [...state.messagesData, {id: 'user/3', message: action.newMessage} ]
             }
             // let stateCopy = Object.assign({}, state)
             // stateCopy.messagesData.push(text);
             // stateCopy.dialogsInputValue = '';
         }
-        case UPDATE_INPUT_DIALOGS: {
-            return {
-                ...state,
-                dialogsInputValue: action.symbols,
-            }
-            // stateCopy.dialogsInputValue = action.symbols;
-            // return stateCopy;
-        }
+        // case UPDATE_INPUT_DIALOGS: {
+        //     return {
+        //         ...state,
+        //         dialogsInputValue: action.symbols,
+        //     }
+        //     // stateCopy.dialogsInputValue = action.symbols;
+        //     // return stateCopy;
+        // }
         default:
             return state;
             
     }
 }
 
-export const sendMessageActionCreator = () => ({
+export const sendMessageActionCreator = (newMessage) => ({
     type: SEND_MESSAGE,
+    newMessage
 })
 
-export const updateInputDialogsActionCreator = (text) => ({
-    type: UPDATE_INPUT_DIALOGS,
-    symbols: text,
-})
+// export const updateInputDialogsActionCreator = (text) => ({
+//     type: UPDATE_INPUT_DIALOGS,
+//     symbols: text,
+// })
 
 export default messagesReducer;

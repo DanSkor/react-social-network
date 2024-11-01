@@ -20,6 +20,19 @@ export const getAuthData = () => {
             .then(response => response.data)
 };
 
+export const getAuthLogin = (email, password, rememberMe = false) => {
+    return axios.post(BASE_URL + `auth/login/`,
+        {email, password, rememberMe},
+        {withCredentials: true})
+    .then(response => response.data)
+}
+
+export const getAuthLogout = () => {
+    return axios.delete(BASE_URL + `auth/login/`,
+        {withCredentials: true})
+    .then(response => response.data)
+}
+
 export const getFollow = (id) => {
     return axios.post(BASE_URL + 'follow/' + id,
         {},

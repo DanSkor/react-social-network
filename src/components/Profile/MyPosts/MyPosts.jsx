@@ -1,29 +1,45 @@
 import React from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
+import { Field, Form, Formik } from 'formik';
+
+const MyPostsForm = (props) => {
+    // console.log(props)
+    // let newPost = React.createRef();
+
+    return (
+        <Formik 
+        initialValues={{newPostText: ''}}
+        onSubmit={values => {
+            props.addPost(values.newPostText);
+        }}
+        validate={values => {
+            const errors = {};
+            if (!values.newPostText) {
+                errors.newPostText = 'Required';
+            }
+            return errors;
+        }}>
+
+        {() => (
+            <Form>
+                <Field name={'newPostText'} type='text'></Field>
+                <button className={style.button} type='submit'>Add post</button>
+            </Form>
+        )}
+        </Formik>
+    )
+}
+
 
 const MyPosts = (props) => {
-    // console.log(props)
+    console.log(props)
     let posts = props.posts.map(post => <Post name={post.name} comment={post.comment} likesCount={post.likesCount} image={post.image} key={post.id}/>)
-
-    let newPost = React.createRef();
-
-    let onButtonClick = () => {
-        props.addPost();
-    }
-
-    let onInputChange = ()=> {
-        let text = newPost.current.value;
-        props.updateNewPostText(text)
-    }
 
     return (
         <div>
             <h2 className={style.title}>My posts</h2>
-            <div>
-                <input ref={newPost} onChange={onInputChange} value={props.inputTextValue} type='text'></input>
-                <button className={style.button} onClick={onButtonClick}>Add post</button>
-            </div>
+            <MyPostsForm addPost={props.addPost}/>
             <div className={style.posts}>
                 {posts}
             </div>

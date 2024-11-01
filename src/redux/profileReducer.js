@@ -5,7 +5,7 @@ import gandalf from '../img/gandalf.jpg';
 import { getApiProfile, getApiStatus, updateApiStatus } from '../api/api';
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_INPUT_PROFILE = 'UPDATE-INPUT-PROFILE';
+// const UPDATE_INPUT_PROFILE = 'UPDATE-INPUT-PROFILE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -15,7 +15,7 @@ let initialState = {
         {id: 2, name: 'Hren s Gory', comment: 'Hell yeahh', likesCount: 52, image: hren},
         {id: 3, name: 'Gandalf', comment: 'You will not pass!', likesCount: 686, image: gandalf},
     ],
-    inputTextValue: '',
+    // inputTextValue: '',
     profile: null,
     status: '',
 }
@@ -26,20 +26,20 @@ const profileReducer = (state = initialState, action) => {
             let newMessage = {
                 id: state.postsData.length++,
                 name: 'Me',
-                comment: state.inputTextValue,
+                comment: action.newPostText,
                 likesCount: 0,
                 image: me,
             };
-            let stateCopy = Object.assign({}, state)
-            stateCopy.postsData.push(newMessage);
-            stateCopy.inputTextValue = '';
-            return stateCopy;
+            return {
+                ...state,
+                postsData: [...state.postsData, newMessage]
+            }
         }
-        case UPDATE_INPUT_PROFILE: {
-            let stateCopy = Object.assign({}, state)
-            stateCopy.inputTextValue = action.symbols;
-            return stateCopy;
-        }
+        // case UPDATE_INPUT_PROFILE: {
+        //     let stateCopy = Object.assign({}, state)
+        //     stateCopy.inputTextValue = action.symbols;
+        //     return stateCopy;
+        // }
         case SET_USER_PROFILE: {
            return {
             ...state,
@@ -57,8 +57,9 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({
+export const addPostActionCreator = (newPostText) => ({
     type: ADD_POST,
+    newPostText,
 })
 
 export const setUserProfile = (profile) => ({
@@ -66,10 +67,10 @@ export const setUserProfile = (profile) => ({
     profile,
 })
 
-export const updateInputProfileActionCreator = (text) => ({
-    type: UPDATE_INPUT_PROFILE,
-    symbols: text,
-})
+// export const updateInputProfileActionCreator = (text) => ({
+//     type: UPDATE_INPUT_PROFILE,
+//     symbols: text,
+// })
 
 export const setStatus = (status) => ({
     type: SET_STATUS,

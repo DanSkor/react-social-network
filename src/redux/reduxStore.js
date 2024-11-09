@@ -5,6 +5,7 @@ import messagesReducer from './messagesReducer';
 import navbarReducer from './navbarReducer';
 import usersReducer from './usersReducer';
 import authReducer from './authReducer';
+import appReducer from './appReducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -12,6 +13,7 @@ let reducers = combineReducers({
     navBar: navbarReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    app: appReducer
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

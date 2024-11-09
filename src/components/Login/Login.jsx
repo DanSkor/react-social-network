@@ -25,7 +25,7 @@ const LoginForm = (props) => {
     return (
         <Formik 
             initialValues={{email: '', password: '', rememberMe: false}}
-            onSubmit={values => {
+            onSubmit={(values) => {
                 console.log(values)
                 props.login(values.email, values.password, values.rememberMe)
             }}

@@ -30,7 +30,8 @@ export const setAuthUserData = (id, email, login, isAuth) => ({
 export const authorization = () => {
 
     return (dispatch) => {
-             getAuthData().then(data => {
+
+            return getAuthData().then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login, true));

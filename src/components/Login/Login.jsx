@@ -17,17 +17,17 @@ function validateEmail(values) {
 
 function validatePassword(values) {
     if (!/^(?=^.{8,}$)/i.test(values)) {
-        return 'minimum 8 characters, one number, one uppercase letter and one in saved form';
+        return 'minimum 8 characters';
     } 
 }
 
-const LoginForm = (props) => {
+const LoginForm = ({login}) => {
     return (
         <Formik 
             initialValues={{email: '', password: '', rememberMe: false}}
             onSubmit={(values) => {
                 console.log(values)
-                props.login(values.email, values.password, values.rememberMe)
+                login(values.email, values.password, values.rememberMe)
             }}
             // validateEmail={values => {
             //     const errors = {};
@@ -77,15 +77,15 @@ const LoginForm = (props) => {
     )
 }
 
-const Login = (props) => {
-    if (props.isAuth) {
+const Login = ({isAuth, login}) => {
+    if (isAuth) {
         return <NavLink to='/profile/' />
     }
 
     return (
         <div>
         <h3>Hello! Please enter your login and password!</h3>
-        <LoginForm login={props.login}/>
+        <LoginForm login={login}/>
         </div>
     )
 }

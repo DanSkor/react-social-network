@@ -4,10 +4,10 @@ import hren from '../img/hren.png';
 import gandalf from '../img/gandalf.jpg';
 import { getApiProfile, getApiStatus, updateApiStatus } from '../api/api';
 
-const ADD_POST = 'ADD-POST';
-// const UPDATE_INPUT_PROFILE = 'UPDATE-INPUT-PROFILE';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'profile/ADD-POST';
+const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+const SET_STATUS = 'profile/SET_STATUS';
+const DELETE_POST = 'profile/DELETE_POST';
 
 let initialState = {
     postsData: [
@@ -15,7 +15,6 @@ let initialState = {
         {id: 2, name: 'Hren s Gory', comment: 'Hell yeahh', likesCount: 52, image: hren},
         {id: 3, name: 'Gandalf', comment: 'You will not pass!', likesCount: 686, image: gandalf},
     ],
-    // inputTextValue: '',
     profile: null,
     status: '',
 }
@@ -24,7 +23,7 @@ const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_POST: {
             let newMessage = {
-                id: state.postsData.length++,
+                id: state.postsData.length,
                 name: 'Me',
                 comment: action.newPostText,
                 likesCount: 0,
@@ -52,6 +51,12 @@ const profileReducer = (state = initialState, action) => {
             status: action.status,
            }
         }
+        case DELETE_POST: {
+           return {
+            ...state,
+            postsData: state.postsData.filter(post => post.id !== action.id),
+           }
+        }
         default:
             return state;
     }
@@ -77,34 +82,34 @@ export const setStatus = (status) => ({
     status
 })
 
+export const deletePost = (id) => ({
+    type: DELETE_POST,
+    id
+})
+
 export const getProfile = (userId) => {
 
-    return (dispatch) => {
-        getApiProfile(userId).then(data => {
-            dispatch(setUserProfile(data));
-        })
+    return async (dispatch) => {
+        let response = await getApiProfile(userId);
+        dispatch(setUserProfile(response));
     }
 }
 
 export const getStatus = (userId) => {
 
-    return (dispatch) => {
-        getApiStatus(userId)
-        .then(data => {
-            dispatch(setStatus(data));
-        })
+    return async (dispatch) => {
+        let response = await getApiStatus(userId);
+        dispatch(setStatus(response));
     }
 }
 
 export const updateStatus = (status) => {
 
-    return (dispatch) => {
-        updateApiStatus(status)
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        })
+    return async (dispatch) => {
+        let response = await updateApiStatus(status);
+        if (response.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 }
 

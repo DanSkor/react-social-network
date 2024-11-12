@@ -16,27 +16,11 @@ let User = (props) => {
                                         
                                         props.unfollow(props.id)
 
-                                        // props.toggleFollowingProgress(true, props.id);
-                                        // getUnfollow(props.id).then(data => {
-                                        //     if (data.resultCode === 0) {
-                                        //         props.unfollow(props.id)
-                                        //     }
-                                        //     props.toggleFollowingProgress(false, props.id);
-                                        // })
-
                                     }} type="button">Unfollow</button>
                                     : <button className={style.buttonFollow} disabled={props.inProgress.some(id => id === props.id)}
                                     onClick={() => {
 
                                         props.follow(props.id);
-                                        
-                                        // props.toggleFollowingProgress(true, props.id);
-                                        // getFollow(props.id).then(data => {
-                                        //     if (data.resultCode === 0) {
-                                        //          props.follow(props.id)
-                                        //         }
-                                        //     props.toggleFollowingProgress(false, props.id);
-                                        // })
 
                                     }} type="button">Follow</button>}
                 </div>

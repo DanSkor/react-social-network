@@ -9,7 +9,7 @@ let Users = (props) => {
         return (
             <div>
                 <h2>Users</h2>
-                <Paginator totalUsersCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
+                <Paginator totalUsersCount={props.totalUsersCount} pageSize={props.pageSize} currentPage={props.currentPage} onPageChanged={props.onPageChanged} portionSize={props.portionSize}/>
                 <ul className={style.list}>
                     {users}
                 </ul>

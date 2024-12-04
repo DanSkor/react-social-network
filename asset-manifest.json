@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/react-social-network/static/css/main.ace4a040.css",
+    "main.js": "/react-social-network/static/js/main.5869855e.js",
+    "static/css/261.433c4b65.chunk.css": "/react-social-network/static/css/261.433c4b65.chunk.css",
+    "static/js/261.d67fc84e.chunk.js": "/react-social-network/static/js/261.d67fc84e.chunk.js",
+    "static/css/797.8d15aaed.chunk.css": "/react-social-network/static/css/797.8d15aaed.chunk.css",
+    "static/js/797.02cc49a6.chunk.js": "/react-social-network/static/js/797.02cc49a6.chunk.js",
+    "static/js/453.ed3810f9.chunk.js": "/react-social-network/static/js/453.ed3810f9.chunk.js",
+    "static/media/hren.png": "/react-social-network/static/media/hren.8e9baef0425c607caae6.png",
+    "static/media/gallery.jpg": "/react-social-network/static/media/gallery.a3fc021962fbde3568fe.jpg",
+    "static/media/logo.png": "/react-social-network/static/media/logo.daee8d284ac5fea8f2e9.png",
+    "static/media/ava.jpg": "/react-social-network/static/media/ava.28c3708d017abb1fbb4c.jpg",
+    "static/media/me.webp": "/react-social-network/static/media/me.59cec90d72002a6265f1.webp",
+    "static/media/loader.gif": "/react-social-network/static/media/loader.75c4521334e47c6e3303.gif",
+    "static/media/news.jpg": "/react-social-network/static/media/news.b6fa1b4d06d28d9723c8.jpg",
+    "static/media/gandalf.jpg": "/react-social-network/static/media/gandalf.e1b3befa7c0d4cf6bea9.jpg",
+    "static/media/user-ava.jpg": "/react-social-network/static/media/user-ava.666ec1f75b834ff075f4.jpg",
+    "static/media/anonim.png": "/react-social-network/static/media/anonim.8bb3b1b393446a586b52.png",
+    "index.html": "/react-social-network/index.html",
+    "main.ace4a040.css.map": "/react-social-network/static/css/main.ace4a040.css.map",
+    "main.5869855e.js.map": "/react-social-network/static/js/main.5869855e.js.map",
+    "261.433c4b65.chunk.css.map": "/react-social-network/static/css/261.433c4b65.chunk.css.map",
+    "261.d67fc84e.chunk.js.map": "/react-social-network/static/js/261.d67fc84e.chunk.js.map",
+    "797.8d15aaed.chunk.css.map": "/react-social-network/static/css/797.8d15aaed.chunk.css.map",
+    "797.02cc49a6.chunk.js.map": "/react-social-network/static/js/797.02cc49a6.chunk.js.map",
+    "453.ed3810f9.chunk.js.map": "/react-social-network/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ace4a040.css",
+    "static/js/main.5869855e.js"
+  ]
+}

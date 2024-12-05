@@ -70,3 +70,18 @@ export const updateApiStatus = (status) => {
     })
         .then(response => response.data)
 }
+
+export const savePhotoApi = (photoFile) => {
+    const formData = new FormData();
+    formData.append('image', photoFile)
+
+    return axios.put(BASE_URL + 'profile/photo', formData,
+       {
+        withCredentials: true,
+        headers: {
+            'API-KEY': '55bc9523-1d91-4584-a2d8-afd097d20a45',
+            // 'Content-Type': 'multipart/form-data'
+        }
+    })
+        .then(response => response.data)
+}

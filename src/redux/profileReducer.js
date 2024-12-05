@@ -2,12 +2,13 @@ import me from '../img/me.webp';
 import avatar from '../img/ava.jpg';
 import hren from '../img/hren.png';
 import gandalf from '../img/gandalf.jpg';
-import { getApiProfile, getApiStatus, updateApiStatus } from '../api/api';
+import { getApiProfile, getApiStatus, savePhotoApi, updateApiStatus } from '../api/api';
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
 const SET_STATUS = 'profile/SET_STATUS';
 const DELETE_POST = 'profile/DELETE_POST';
+const SAVE_PHOTO_SUCCESS = 'profile/SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     postsData: [
@@ -57,6 +58,12 @@ const profileReducer = (state = initialState, action) => {
             postsData: state.postsData.filter(post => post.id !== action.id),
            }
         }
+        case SAVE_PHOTO_SUCCESS: {
+            return {
+             ...state,
+             profile: {...state.profile, photos: action.photos},
+            }
+         }
         default:
             return state;
     }
@@ -87,6 +94,11 @@ export const deletePost = (id) => ({
     id
 })
 
+export const savePhotoSuccess = (photos) => ({
+    type: SAVE_PHOTO_SUCCESS,
+    photos
+})
+
 export const getProfile = (userId) => {
 
     return async (dispatch) => {
@@ -107,8 +119,20 @@ export const updateStatus = (status) => {
 
     return async (dispatch) => {
         let response = await updateApiStatus(status);
+        console.log(response)
         if (response.resultCode === 0) {
             dispatch(setStatus(status));
+        }
+    }
+}
+
+export const savePhoto = (file) => {
+
+    return async (dispatch) => {
+        let response = await savePhotoApi(file);
+        console.log(response)
+        if (response.resultCode === 0) {
+            dispatch(savePhotoSuccess(response.data.photos));
         }
     }
 }

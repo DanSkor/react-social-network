@@ -27,25 +27,25 @@ class App extends Component {
     }
 
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className='app-wrapper'>
             <HeaderContainer />
             <NavContainer />
             <div className='app-wrapper-content'>
-            <Suspense fallback={<div><Preloader /></div>}>
-              <Routes>
-                <Route exact path='/profile/:userId?' element={<ProfileContainer />}/>
-                <Route path='/dialogs/*' element={<DialogsContainer />}/>
-                <Route path='/news/*' element={<News/>}/>
-                <Route path='/music/*' element={<Music/>}/>
-                <Route path='/users/*' element={<UsersContainer/>}/>
-                <Route path='/settings/*' element={<Settings/>}/>
-                <Route path='/login/*' element={<Login/>}/>
-              </Routes>
-            </Suspense>
+              <Suspense fallback={<div><Preloader /></div>}>
+                <Routes>
+                  <Route exact path='/profile/:userId?' element={<ProfileContainer />}/>
+                  <Route path='/dialogs/*' element={<DialogsContainer />}/>
+                  <Route path='/news/*' element={<News/>}/>
+                  <Route path='/music/*' element={<Music/>}/>
+                  <Route path='/users/*' element={<UsersContainer/>}/>
+                  <Route path='/settings/*' element={<Settings/>}/>
+                  <Route path='/login/*' element={<Login/>}/>
+                </Routes>
+              </Suspense>
             </div>
-          </div>
-        </BrowserRouter>
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 .content__bg {
@@ -20,4 +21,11 @@
 
 .list {
   margin: 0;
+}
+
+.fileButton {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  color: black;
 }
